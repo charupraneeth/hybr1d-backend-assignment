@@ -7,4 +7,10 @@ router.post("/register", (req, res) => {
     message: "In register route",
   });
 });
+
+router.post("/login", (req, res) => {
+  res.json({
+    message: "In login route",
+  });
+});
 export default router;

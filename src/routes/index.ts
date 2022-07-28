@@ -1,12 +1,8 @@
 import { Router } from "express";
+import authRoutes from "./auth";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  console.log("in index route");
-  res.json({
-    msg: "in index route",
-  });
-});
+router.use("/auth", authRoutes);
 
 export default router;
