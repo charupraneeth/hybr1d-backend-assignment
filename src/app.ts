@@ -1,5 +1,6 @@
 import express from "express";
 import api from "./routes";
+import { errorHandler, notFound } from "./middlewares";
 
 const app = express();
 
@@ -10,5 +11,9 @@ app.get("/", (_, res) => {
 });
 
 app.use("/api", api);
+
+app.use(notFound);
+
+app.use(errorHandler);
 
 export default app;
