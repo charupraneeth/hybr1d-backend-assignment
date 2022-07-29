@@ -1,8 +1,10 @@
+import { PrismaClient } from "@prisma/client";
 import { Router } from "express";
 
 const router = Router();
+const prisma = new PrismaClient();
 
-router.post("/register", (req, res, next) => {
+router.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     if (!username) {
@@ -12,9 +14,18 @@ router.post("/register", (req, res, next) => {
       throw new Error("Password needed");
     }
 
+    const user = await prisma.user.create({
+      data: {
+        username,
+        password,
+      },
+    });
+
     res.json({
-      username,
-      password,
+      status: "ok",
+      data: {
+        user,
+      },
     });
   } catch (error) {
     next(error);
