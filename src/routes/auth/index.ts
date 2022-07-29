@@ -38,9 +38,33 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-router.post("/login", (req, res) => {
-  res.json({
-    message: "In login route",
-  });
+router.post("/login", async (req, res, next) => {
+  try {
+    const parsedUser = userSchema.parse(req.body);
+
+    const user = await prisma.user.findUniqueOrThrow({
+      where: {
+        username: parsedUser.username,
+      },
+    });
+
+    const isMatched = await bcrypt.compare(parsedUser.password, user.password);
+
+    if (!isMatched) {
+      throw new Error("Incorrect username/password");
+    }
+
+    user.password = "";
+
+    res.json({
+      status: "ok",
+      data: {
+        user,
+      },
+      error: "",
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 export default router;
