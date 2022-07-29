@@ -3,12 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum UserType{
+  buyer
+  seller
+}
+
 
 model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   password String
+  type UserType
 }

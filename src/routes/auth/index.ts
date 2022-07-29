@@ -12,10 +12,15 @@ const userSchema = z.object({
   username: z.string().min(3),
   password: z.string().min(8),
 });
+
+const userRegisterSchema = userSchema.extend({
+  type: z.enum(["buyer", "seller"]),
+});
+
 router.post("/register", async (req, res, next) => {
   try {
     // console.log(userSchema.parse(req.body));
-    const parsedUser = userSchema.parse(req.body);
+    const parsedUser = userRegisterSchema.parse(req.body);
 
     const hashedPassword = await bcrypt.hash(parsedUser.password, SALT_ROUNDS);
     parsedUser.password = hashedPassword;
@@ -24,6 +29,7 @@ router.post("/register", async (req, res, next) => {
       data: parsedUser,
       select: {
         username: true,
+        type: true,
       },
     });
 
