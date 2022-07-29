@@ -57,6 +57,16 @@ function authorizeBuyer(req: Request, res: Response, next: NextFunction) {
   next();
 }
 
+function authorizeSeller(req: Request, res: Response, next: NextFunction) {
+  // @ts-ignore
+  if (req.user?.type !== "seller") {
+    res.status(400);
+    next(new Error("User unauthorized for access"));
+  }
+
+  next();
+}
+
 function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
   const error = new Error(`🔍 - Not Found - ${req.originalUrl}`);
@@ -77,4 +87,10 @@ function errorHandler(
   });
 }
 
-export { notFound, errorHandler, authenticationMiddleware, authorizeBuyer };
+export {
+  notFound,
+  errorHandler,
+  authenticationMiddleware,
+  authorizeBuyer,
+  authorizeSeller,
+};
