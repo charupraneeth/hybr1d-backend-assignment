@@ -1,7 +1,7 @@
 import { PrismaClient, UserType } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
-import jwt, { JsonWebTokenError } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
@@ -31,15 +31,21 @@ function authenticationMiddleware(
           next(err);
         }
 
-        const user = await prisma.user.findUniqueOrThrow({
-          where: {
-            username: decoded?.data,
-          },
-        });
-        user.password = "";
-        // @ts-ignore
-        req["user"] = user;
-        next();
+        prisma.user
+          .findUniqueOrThrow({
+            where: {
+              username: decoded?.data,
+            },
+          })
+          .then((user) => {
+            user.password = "";
+            // @ts-ignore
+            req["user"] = user;
+            next();
+          })
+          .catch((err) => {
+            next(err);
+          });
       }
     );
   } catch (error) {

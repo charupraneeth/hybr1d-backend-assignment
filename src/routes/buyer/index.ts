@@ -62,6 +62,9 @@ router.get("/seller-catalog/:seller_id", async (req, res, next) => {
 
 router.post("/create-order/:seller_id", async (req, res, next) => {
   try {
+    // @ts-ignore
+    const userId = req["user"].id as number;
+
     const sellerId = req.params?.seller_id;
     const parsedProductIds = productIdsSchema.parse(req.body);
 
@@ -88,7 +91,8 @@ router.post("/create-order/:seller_id", async (req, res, next) => {
 
     const order = await prisma.order.create({
       data: {
-        buyerId: seller.id,
+        sellerId: seller.id,
+        buyerId: userId,
         products: {
           connect: parsedProductIds.productIds.map((id) => {
             return { id };

@@ -27,12 +27,15 @@ model User {
   password String
   type     UserType
   catalog  Product[]
-  orders   Order[]
+  orders   Order[] @relation("buy")
+  deliveries Order[] @relation("sell")
 }
 
 model Order{
   id       Int       @id @default(autoincrement())
   products Product[]
-  seller   User      @relation(fields: [sellerId],references: [id])
+  seller   User      @relation("sell",fields: [sellerId],references: [id])
   sellerId Int
+  buyer   User      @relation("buy",fields: [buyerId],references: [id])
+  buyerId Int
 }

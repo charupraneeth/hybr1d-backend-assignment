@@ -56,10 +56,24 @@ router.get("/orders", async (req, res, next) => {
     // @ts-ignore
     const userId = req["user"].id as number;
 
+    const orders = await prisma.order.findMany({
+      where: {
+        sellerId: userId,
+      },
+      include: {
+        products: true,
+        buyer: {
+          select: {
+            username: true,
+            id: true,
+          },
+        },
+      },
+    });
     res.json({
       status: "ok",
       data: {
-        response,
+        orders,
       },
       error: "",
     });
