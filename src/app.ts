@@ -4,6 +4,8 @@ import { errorHandler, notFound } from "./middlewares";
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (_, res) => {
   res.json({
     message: "API exists in /api route",
