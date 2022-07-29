@@ -51,4 +51,21 @@ router.post("/create-catalog", async (req, res, next) => {
   }
 });
 
+router.get("/orders", async (req, res, next) => {
+  try {
+    // @ts-ignore
+    const userId = req["user"].id as number;
+
+    res.json({
+      status: "ok",
+      data: {
+        response,
+      },
+      error: "",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;
