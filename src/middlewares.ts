@@ -1,4 +1,61 @@
+import { PrismaClient, UserType } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
+import { z } from "zod";
+import jwt, { JsonWebTokenError } from "jsonwebtoken";
+
+const prisma = new PrismaClient();
+
+const tokenSchema = z
+  .string({
+    required_error: "Auth token is required",
+  })
+  .startsWith("Bearer ", { message: "Token should start with Bearer " })
+  .min(20);
+
+function authenticationMiddleware(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const authString = req.get("Authorization");
+    const parsedToken = tokenSchema.parse(authString);
+    const [_, token] = parsedToken.split("Bearer ");
+    console.log(token);
+
+    jwt.verify(
+      token,
+      process.env.ACCESS_TOKEN_SECRET as any,
+      async function (err: any, decoded: any) {
+        if (err) {
+          next(err);
+        }
+
+        const user = await prisma.user.findUniqueOrThrow({
+          where: {
+            username: decoded?.data,
+          },
+        });
+        user.password = "";
+        // @ts-ignore
+        req["user"] = user;
+        next();
+      }
+    );
+  } catch (error) {
+    next(error);
+  }
+}
+
+function authorizeBuyer(req: Request, res: Response, next: NextFunction) {
+  // @ts-ignore
+  if (req.user?.type !== "buyer") {
+    res.status(400);
+    next(new Error("User unauthorized for access"));
+  }
+
+  next();
+}
 
 function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
@@ -20,4 +77,4 @@ function errorHandler(
   });
 }
 
-export { notFound, errorHandler };
+export { notFound, errorHandler, authenticationMiddleware, authorizeBuyer };
