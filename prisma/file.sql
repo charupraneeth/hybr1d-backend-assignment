@@ -5,7 +5,7 @@
 -- Dumped from database version 13.2
 -- Dumped by pg_dump version 13.2
 
--- Started on 2022-07-30 00:23:38
+-- Started on 2022-07-30 12:21:04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,14 +20,12 @@ SET row_security = off;
 
 DROP DATABASE "Hybr1dAssignment";
 --
--- TOC entry 3040 (class 1262 OID 18062)
--- Name: Hybr1dAssignment; Type: DATABASE; Schema: -; Owner: charupraneeth
+-- TOC entry 3040 (class 1262 OID 18506)
+-- Name: Hybr1dAssignment; Type: DATABASE; Schema: -; Owner: -
 --
 
 CREATE DATABASE "Hybr1dAssignment" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'English_India.1252';
 
-
-ALTER DATABASE "Hybr1dAssignment" OWNER TO charupraneeth;
 
 \connect "Hybr1dAssignment"
 
@@ -44,26 +42,24 @@ SET row_security = off;
 
 --
 -- TOC entry 3 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA public;
 
 
-ALTER SCHEMA public OWNER TO postgres;
-
 --
 -- TOC entry 3041 (class 0 OID 0)
 -- Dependencies: 3
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON SCHEMA public IS 'standard public schema';
 
 
 --
--- TOC entry 634 (class 1247 OID 18143)
--- Name: UserType; Type: TYPE; Schema: public; Owner: charupraneeth
+-- TOC entry 630 (class 1247 OID 18508)
+-- Name: UserType; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public."UserType" AS ENUM (
@@ -72,15 +68,13 @@ CREATE TYPE public."UserType" AS ENUM (
 );
 
 
-ALTER TYPE public."UserType" OWNER TO charupraneeth;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- TOC entry 206 (class 1259 OID 18177)
--- Name: Order; Type: TABLE; Schema: public; Owner: charupraneeth
+-- TOC entry 200 (class 1259 OID 18513)
+-- Name: Order; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public."Order" (
@@ -90,11 +84,9 @@ CREATE TABLE public."Order" (
 );
 
 
-ALTER TABLE public."Order" OWNER TO charupraneeth;
-
 --
--- TOC entry 205 (class 1259 OID 18175)
--- Name: Order_id_seq; Type: SEQUENCE; Schema: public; Owner: charupraneeth
+-- TOC entry 201 (class 1259 OID 18516)
+-- Name: Order_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public."Order_id_seq"
@@ -106,20 +98,18 @@ CREATE SEQUENCE public."Order_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Order_id_seq" OWNER TO charupraneeth;
-
 --
 -- TOC entry 3042 (class 0 OID 0)
--- Dependencies: 205
--- Name: Order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charupraneeth
+-- Dependencies: 201
+-- Name: Order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public."Order_id_seq" OWNED BY public."Order".id;
 
 
 --
--- TOC entry 204 (class 1259 OID 18161)
--- Name: Product; Type: TABLE; Schema: public; Owner: charupraneeth
+-- TOC entry 202 (class 1259 OID 18518)
+-- Name: Product; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public."Product" (
@@ -130,11 +120,9 @@ CREATE TABLE public."Product" (
 );
 
 
-ALTER TABLE public."Product" OWNER TO charupraneeth;
-
 --
--- TOC entry 203 (class 1259 OID 18159)
--- Name: Product_id_seq; Type: SEQUENCE; Schema: public; Owner: charupraneeth
+-- TOC entry 203 (class 1259 OID 18524)
+-- Name: Product_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public."Product_id_seq"
@@ -146,20 +134,18 @@ CREATE SEQUENCE public."Product_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Product_id_seq" OWNER TO charupraneeth;
-
 --
 -- TOC entry 3043 (class 0 OID 0)
 -- Dependencies: 203
--- Name: Product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charupraneeth
+-- Name: Product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public."Product_id_seq" OWNED BY public."Product".id;
 
 
 --
--- TOC entry 202 (class 1259 OID 18149)
--- Name: User; Type: TABLE; Schema: public; Owner: charupraneeth
+-- TOC entry 204 (class 1259 OID 18526)
+-- Name: User; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public."User" (
@@ -170,11 +156,9 @@ CREATE TABLE public."User" (
 );
 
 
-ALTER TABLE public."User" OWNER TO charupraneeth;
-
 --
--- TOC entry 201 (class 1259 OID 18147)
--- Name: User_id_seq; Type: SEQUENCE; Schema: public; Owner: charupraneeth
+-- TOC entry 205 (class 1259 OID 18532)
+-- Name: User_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public."User_id_seq"
@@ -186,20 +170,18 @@ CREATE SEQUENCE public."User_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."User_id_seq" OWNER TO charupraneeth;
-
 --
 -- TOC entry 3044 (class 0 OID 0)
--- Dependencies: 201
--- Name: User_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charupraneeth
+-- Dependencies: 205
+-- Name: User_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public."User_id_seq" OWNED BY public."User".id;
 
 
 --
--- TOC entry 207 (class 1259 OID 18183)
--- Name: _OrderToProduct; Type: TABLE; Schema: public; Owner: charupraneeth
+-- TOC entry 206 (class 1259 OID 18534)
+-- Name: _OrderToProduct; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public."_OrderToProduct" (
@@ -208,11 +190,9 @@ CREATE TABLE public."_OrderToProduct" (
 );
 
 
-ALTER TABLE public."_OrderToProduct" OWNER TO charupraneeth;
-
 --
--- TOC entry 200 (class 1259 OID 18132)
--- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: charupraneeth
+-- TOC entry 207 (class 1259 OID 18537)
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public._prisma_migrations (
@@ -227,36 +207,34 @@ CREATE TABLE public._prisma_migrations (
 );
 
 
-ALTER TABLE public._prisma_migrations OWNER TO charupraneeth;
-
 --
--- TOC entry 2880 (class 2604 OID 18180)
--- Name: Order id; Type: DEFAULT; Schema: public; Owner: charupraneeth
+-- TOC entry 2876 (class 2604 OID 18545)
+-- Name: Order id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Order" ALTER COLUMN id SET DEFAULT nextval('public."Order_id_seq"'::regclass);
 
 
 --
--- TOC entry 2879 (class 2604 OID 18164)
--- Name: Product id; Type: DEFAULT; Schema: public; Owner: charupraneeth
+-- TOC entry 2877 (class 2604 OID 18546)
+-- Name: Product id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Product" ALTER COLUMN id SET DEFAULT nextval('public."Product_id_seq"'::regclass);
 
 
 --
--- TOC entry 2878 (class 2604 OID 18152)
--- Name: User id; Type: DEFAULT; Schema: public; Owner: charupraneeth
+-- TOC entry 2878 (class 2604 OID 18547)
+-- Name: User id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User_id_seq"'::regclass);
 
 
 --
--- TOC entry 3033 (class 0 OID 18177)
--- Dependencies: 206
--- Data for Name: Order; Type: TABLE DATA; Schema: public; Owner: charupraneeth
+-- TOC entry 3027 (class 0 OID 18513)
+-- Dependencies: 200
+-- Data for Name: Order; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public."Order" VALUES (3, 1, 5);
@@ -264,9 +242,9 @@ INSERT INTO public."Order" VALUES (4, 2, 6);
 
 
 --
--- TOC entry 3031 (class 0 OID 18161)
--- Dependencies: 204
--- Data for Name: Product; Type: TABLE DATA; Schema: public; Owner: charupraneeth
+-- TOC entry 3029 (class 0 OID 18518)
+-- Dependencies: 202
+-- Data for Name: Product; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public."Product" VALUES (4, 'key', 13, 1);
@@ -278,9 +256,9 @@ INSERT INTO public."Product" VALUES (9, 'laptop', 67, 2);
 
 
 --
--- TOC entry 3029 (class 0 OID 18149)
--- Dependencies: 202
--- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: charupraneeth
+-- TOC entry 3031 (class 0 OID 18526)
+-- Dependencies: 204
+-- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public."User" VALUES (1, 'bob', '$2b$10$FlBMBUfzl.DfsrQ9nvufvukjQiFZESWz5SgiyCQEogNM7BC8uQN.6', 'seller');
@@ -294,9 +272,9 @@ INSERT INTO public."User" VALUES (8, 'bob8', '$2b$10$9QL5KoMlHTnpQ1NVBksRNui92b/
 
 
 --
--- TOC entry 3034 (class 0 OID 18183)
--- Dependencies: 207
--- Data for Name: _OrderToProduct; Type: TABLE DATA; Schema: public; Owner: charupraneeth
+-- TOC entry 3033 (class 0 OID 18534)
+-- Dependencies: 206
+-- Data for Name: _OrderToProduct; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public."_OrderToProduct" VALUES (3, 5);
@@ -304,9 +282,9 @@ INSERT INTO public."_OrderToProduct" VALUES (4, 8);
 
 
 --
--- TOC entry 3027 (class 0 OID 18132)
--- Dependencies: 200
--- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: charupraneeth
+-- TOC entry 3034 (class 0 OID 18537)
+-- Dependencies: 207
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public._prisma_migrations VALUES ('7387d373-0da7-4e78-a80d-4cf7b3ab08e8', '2e1cf6818d11c2c0fbcf4be7f81bde23e36514f419ad67e7fadd6035b57da1e1', '2022-07-29 23:30:56.971087+05:30', '20220729084015_init_postgres', NULL, NULL, '2022-07-29 23:30:56.9583+05:30', 1);
@@ -318,8 +296,8 @@ INSERT INTO public._prisma_migrations VALUES ('5712b2e1-470d-446f-a1ba-7ea8093ac
 
 --
 -- TOC entry 3045 (class 0 OID 0)
--- Dependencies: 205
--- Name: Order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: charupraneeth
+-- Dependencies: 201
+-- Name: Order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public."Order_id_seq"', 4, true);
@@ -328,7 +306,7 @@ SELECT pg_catalog.setval('public."Order_id_seq"', 4, true);
 --
 -- TOC entry 3046 (class 0 OID 0)
 -- Dependencies: 203
--- Name: Product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: charupraneeth
+-- Name: Product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public."Product_id_seq"', 9, true);
@@ -336,16 +314,16 @@ SELECT pg_catalog.setval('public."Product_id_seq"', 9, true);
 
 --
 -- TOC entry 3047 (class 0 OID 0)
--- Dependencies: 201
--- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: charupraneeth
+-- Dependencies: 205
+-- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public."User_id_seq"', 8, true);
 
 
 --
--- TOC entry 2889 (class 2606 OID 18182)
--- Name: Order Order_pkey; Type: CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2882 (class 2606 OID 18549)
+-- Name: Order Order_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Order"
@@ -353,8 +331,8 @@ ALTER TABLE ONLY public."Order"
 
 
 --
--- TOC entry 2887 (class 2606 OID 18169)
--- Name: Product Product_pkey; Type: CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2884 (class 2606 OID 18551)
+-- Name: Product Product_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Product"
@@ -362,8 +340,8 @@ ALTER TABLE ONLY public."Product"
 
 
 --
--- TOC entry 2884 (class 2606 OID 18157)
--- Name: User User_pkey; Type: CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2886 (class 2606 OID 18553)
+-- Name: User User_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."User"
@@ -371,8 +349,8 @@ ALTER TABLE ONLY public."User"
 
 
 --
--- TOC entry 2882 (class 2606 OID 18141)
--- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2891 (class 2606 OID 18555)
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public._prisma_migrations
@@ -380,32 +358,32 @@ ALTER TABLE ONLY public._prisma_migrations
 
 
 --
--- TOC entry 2885 (class 1259 OID 18158)
--- Name: User_username_key; Type: INDEX; Schema: public; Owner: charupraneeth
+-- TOC entry 2887 (class 1259 OID 18556)
+-- Name: User_username_key; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX "User_username_key" ON public."User" USING btree (username);
 
 
 --
--- TOC entry 2890 (class 1259 OID 18186)
--- Name: _OrderToProduct_AB_unique; Type: INDEX; Schema: public; Owner: charupraneeth
+-- TOC entry 2888 (class 1259 OID 18557)
+-- Name: _OrderToProduct_AB_unique; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX "_OrderToProduct_AB_unique" ON public."_OrderToProduct" USING btree ("A", "B");
 
 
 --
--- TOC entry 2891 (class 1259 OID 18187)
--- Name: _OrderToProduct_B_index; Type: INDEX; Schema: public; Owner: charupraneeth
+-- TOC entry 2889 (class 1259 OID 18558)
+-- Name: _OrderToProduct_B_index; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX "_OrderToProduct_B_index" ON public."_OrderToProduct" USING btree ("B");
 
 
 --
--- TOC entry 2894 (class 2606 OID 18344)
--- Name: Order Order_buyerId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2892 (class 2606 OID 18559)
+-- Name: Order Order_buyerId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Order"
@@ -413,8 +391,8 @@ ALTER TABLE ONLY public."Order"
 
 
 --
--- TOC entry 2893 (class 2606 OID 18203)
--- Name: Order Order_sellerId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2893 (class 2606 OID 18564)
+-- Name: Order Order_sellerId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Order"
@@ -422,8 +400,8 @@ ALTER TABLE ONLY public."Order"
 
 
 --
--- TOC entry 2892 (class 2606 OID 18170)
--- Name: Product Product_sellerId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2894 (class 2606 OID 18569)
+-- Name: Product Product_sellerId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."Product"
@@ -431,8 +409,8 @@ ALTER TABLE ONLY public."Product"
 
 
 --
--- TOC entry 2895 (class 2606 OID 18193)
--- Name: _OrderToProduct _OrderToProduct_A_fkey; Type: FK CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2895 (class 2606 OID 18574)
+-- Name: _OrderToProduct _OrderToProduct_A_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."_OrderToProduct"
@@ -440,15 +418,15 @@ ALTER TABLE ONLY public."_OrderToProduct"
 
 
 --
--- TOC entry 2896 (class 2606 OID 18198)
--- Name: _OrderToProduct _OrderToProduct_B_fkey; Type: FK CONSTRAINT; Schema: public; Owner: charupraneeth
+-- TOC entry 2896 (class 2606 OID 18579)
+-- Name: _OrderToProduct _OrderToProduct_B_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."_OrderToProduct"
     ADD CONSTRAINT "_OrderToProduct_B_fkey" FOREIGN KEY ("B") REFERENCES public."Product"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2022-07-30 00:23:38
+-- Completed on 2022-07-30 12:21:04
 
 --
 -- PostgreSQL database dump complete
