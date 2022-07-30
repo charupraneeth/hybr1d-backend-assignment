@@ -35,8 +35,9 @@ router.post("/create-catalog", async (req, res, next) => {
           create: products,
         },
       },
-      include: {
+      select: {
         catalog: true,
+        password: false,
       },
     });
     res.json({
@@ -56,24 +57,45 @@ router.get("/orders", async (req, res, next) => {
     // @ts-ignore
     const userId = req["user"].id as number;
 
-    const orders = await prisma.order.findMany({
+    const response = await prisma.user.findUnique({
       where: {
-        sellerId: userId,
+        id: userId,
       },
-      include: {
-        products: true,
-        buyer: {
+      select: {
+        username: true,
+        id: true,
+        deliveries: {
           select: {
-            username: true,
             id: true,
+            products: true,
+            buyer: {
+              select: {
+                id: true,
+                username: true,
+              },
+            },
           },
         },
       },
     });
+    // const orders = await prisma.order.findMany({
+    //   where: {
+    //     sellerId: userId,
+    //   },
+    //   include: {
+    //     products: true,
+    //     buyer: {
+    //       select: {
+    //         username: true,
+    //         id: true,
+    //       },
+    //     },
+    //   },
+    // });
     res.json({
       status: "ok",
       data: {
-        orders,
+        response,
       },
       error: "",
     });
